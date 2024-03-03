@@ -1,0 +1,88 @@
+.tickerContainer{
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  box-sizing: content-box;
+}
+
+.ticker {
+  display: inline-block;
+  white-space: nowrap;
+  box-sizing: content-box;
+  animation: 60s ticker-scroll infinite linear; 
+  color: white;
+  height: 100%;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+
+.ticker div {
+  display: inline-block;
+  margin-right: 1rem; 
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: .2rem;
+}
+
+.stockPriceChange{
+  padding-left: 6px;
+}
+
+.tooltip{
+  margin-top: 2rem
+}
+
+/* .stockItem:hover {
+  background-color: #374d5d;
+} */
+
+/* .valueChanged{
+  color: red;
+} */
+
+.price{
+  margin-left: 8px;
+}
+
+.positive {
+  color: #1ECB4F; 
+  font-weight: bold;
+}
+
+.negative {
+  color: #F46D22; 
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .ticker div{
+    margin-top: -1px;
+    padding: 3px;
+    padding-right: 5px;
+    font-size: 14px;
+  }
+  .stockPriceChange{
+    margin-left: 4px;
+  }
+}
+
+
+@media only screen and(max-width : 768px) {
+  .search-input {
+    margin-top: 5rem;
+    background-color: white;
+  }
+}

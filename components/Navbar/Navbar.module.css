@@ -1,0 +1,72 @@
+.main {
+    background: rgb(24, 3, 61);
+    background: linear-gradient(37deg, rgba(24, 3, 61, 1) 0%, rgba(57, 13, 138, 1) 28%, rgba(24, 3, 61, 1) 73%);
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 40px;
+    width: 256px;
+    position: fixed;
+    border-radius: 1rem;
+}
+
+.btnGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.btn {
+    color: white;
+    background-color: "transparent";
+    height: 42px;
+    display: flex;
+    justify-content: flex-start;
+    width: 200px;
+    gap: 15px;
+    font-size: 17px;
+}
+
+.btn:hover {
+    background: rgb(57, 13, 138);
+    background: linear-gradient(90deg, rgba(57, 13, 138, 1) 0%, rgba(80, 19, 193, 1) 48%, rgba(57, 13, 138, 1) 100%);
+    filter: drop-shadow(0px 3px #E99C4A);
+}
+
+.hi {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: -10px;
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.icons {
+    font-size: 1.3rem;
+}
+
+@media (max-width: 1024px) {
+    .main {
+        width: 200px;
+    }
+
+    .btnGroup {
+        width: 156.25px;
+    }
+
+    .btn {
+        width: 156.25px;
+        font-size: 14.5px;
+    }
+
+    .hi {
+        font-size: 21.09px;
+    }
+
+    .icons {
+        font-size: 1.1rem;
+    }
+}
