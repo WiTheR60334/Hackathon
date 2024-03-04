@@ -17,9 +17,6 @@ Welcome to our Stock Screener repository! This project aims to provide investors
 
 - Romir Bedekar (https://www.linkedin.com/in/romir-bedekar/)
 - Meet Suthar (https://www.linkedin.com/in/meet-suthar-03126a257/)
-- Henish Trada (https://www.linkedin.com/in/henish-trada-a40931208/)
-- Harsh Bhanderi (https://www.linkedin.com/in/harsh-bhanderi-81969525b/)
-- Soham Solanki (https://www.linkedin.com/in/sohamsolankii/)
 
 ## License
 
