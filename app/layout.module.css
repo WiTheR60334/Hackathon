@@ -1,0 +1,449 @@
+@font-face {
+    font-family: paraf;
+    src: url(/ParalucentMedium.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: gotham;
+    src: url(/GothamMedium.ttf) format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+.main {
+    display: flex;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #000000;
+    font-family: "gotham", sans-serif;
+    font-style: normal;
+    background-color: #000000;
+}
+
+.nav {
+    width: 256px;
+    z-index: 1000;
+    margin: 1.2rem;
+    border-radius: 13px;
+}
+
+.rest {
+    width: 100%;
+    margin-left: 2.7rem;
+}
+
+.dock {
+    width: 100%;
+    height: 100px;
+    margin-top: 5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.tickerTape {
+    width: 100%;
+    height: 40px;
+    background: #111;
+    position: absolute;
+    z-index: 1000;
+    border: solid #2D3137 2px;
+    margin: 1.2rem;
+    border-radius: 15px;
+}
+
+.chart {
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    filter: drop-shadow(0px 3px #4406B4);
+}
+
+.scoreCardTitle,
+.keyMetricsTitle,
+.forecastsTitle {
+    width: 96%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+
+.titleAlign {
+    width: 100%;
+    margin-left: 2rem;
+    display: grid;
+    text-align: start;
+    background: -webkit-linear-gradient(#FFFFFF, #595959);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.scoreCard {
+    margin-top: 2.4rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 140px;
+    margin-bottom: 4.2rem;
+}
+
+.keyMetrics {
+    /* margin-top: 2.4rem; */
+    display: flex;
+    height: 120px;
+    margin-bottom: -1rem;
+    width: 100%;
+    margin-left: 2rem;
+    justify-content: center;
+}
+
+.keyMetricsBG {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0px 3px #D54BDC);
+}
+
+.aboutTitleBG {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    filter: drop-shadow(0px 3px #E99C4A);
+}
+
+.keyMetricsBGG {
+    background: linear-gradient(45deg, #24262C, #000000);
+    border: solid 2px #2D3137;
+    border-radius: 15px;
+    margin-top: 2.4rem;
+    width: 96%;
+    display: flex-row;
+    justify-content: start;
+    z-index: 0;
+}
+
+.aboutTitleBGG {
+    background: linear-gradient(45deg, #24262C, #000000);
+    border: solid 2px #2D3137;
+    border-radius: 15px;
+    margin-top: 2.4rem;
+    margin-bottom: auto;
+    width: 96%;
+    display: flexbox;
+    height: 450px;
+    justify-content: start;
+    z-index: 0;
+}
+
+.wrapper {
+    margin-top: -2.5rem;
+}
+
+.aboutContent {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 120px;
+}
+
+.aboutTitle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 2.1rem;
+    margin-left: .2rem;
+}
+
+.finBGG {
+    background: linear-gradient(45deg, #24262C, #000000);
+    border: solid 2px #2D3137;
+    border-radius: 15px;
+    margin-top: 2.4rem;
+    margin-bottom: auto;
+    width: 96%;
+    height: 500px;
+    justify-content: start;
+    z-index: 0;
+}
+
+.finBG {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    filter: drop-shadow(0px 3px #4406B4);
+}
+
+/* .finwrapper {
+    display: grid;
+    height: 100vh;
+    width: 100vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 335px 335px auto;
+    gap: 3rem;
+}
+
+.finbox {
+    background-color: #D54BDC;
+
+} */
+.finwrapper {
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+    display: grid;
+    height: 100vh;
+    /* width: 95%; */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap: 2rem;
+    column-gap: 2rem;
+}
+
+.finbox {
+    background-color: #16161A;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    height: 335px;
+    border: solid #2D3137 2px;
+    border-radius: 15px;
+}
+
+.finbox5 {
+    grid-column: span 2;
+    background-color: #16161A;
+    border-radius: 5px;
+    height: 335px;
+    border: solid #2D3137 2px;
+    border-radius: 15px;
+}
+
+.forBGG {
+    background: linear-gradient(45deg, #24262C, #000000);
+    border: solid 2px #2D3137;
+    border-radius: 15px;
+    margin-top: 1rem;
+    width: 96%;
+    display: flex;
+    height: 400px;
+    justify-content: start;
+    z-index: 0;
+    position: relative;
+}
+
+.forBG {
+    margin-top: 1.7rem;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    filter: drop-shadow(0px 3px #D54BDC);
+    margin-bottom: 5rem;
+}
+
+
+.peerBGG {
+    background: linear-gradient(45deg, #24262C, #000000);
+    border: solid 2px #2D3137;
+    border-radius: 15px;
+    margin-top: 1.7rem;
+    margin-bottom: auto;
+    width: 96%;
+    display: flex;
+    height: auto;
+    /* justify-content:; */
+    z-index: 0;
+    position: relative;
+    /* Add this */
+}
+
+.peerBG {
+    margin-top: 2.4rem;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    filter: drop-shadow(0px 3px #E99C4A);
+    position: relative;
+    margin-bottom: auto;
+}
+
+.peerwrapper {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: grid;
+    height: 100vh;
+    /* width: 1000px; */
+    grid-template-columns: 1000px 1fr 1fr;
+    grid-template-rows: 80px 1fr 1fr 100px;
+    grid-gap: 1rem;
+}
+
+.cname {
+    grid-row: 1 / 2;
+    grid-column: 1 / 4;
+}
+
+.graph {
+    grid-row: 2 / 4;
+    grid-column: 1 / 2;
+}
+
+.info {
+    grid-row: 2 / 3;
+    grid-column: 2 / 4;
+}
+
+.newsBGG {
+    background: linear-gradient(45deg, #24262C, #000000);
+    border: solid 2px #2D3137;
+    border-radius: 15px;
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+    width: 96%;
+    height: 1257px;
+    justify-content: start;
+    z-index: 0;
+}
+
+.forecast {
+    width: 100%;
+    margin: 1.7rem;
+}
+
+.newsBG {
+    width: 100%;
+    margin-top: 2.4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    filter: drop-shadow(0px 3px #4406B4);
+}
+
+.newswrapper {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: grid;
+    height: 100vh;
+    /* width: 95%; */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    row-gap: 2rem;
+    column-gap: 2rem;
+}
+
+.newsbox {
+    background-color: #16161A;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    height: 335px;
+    border: solid #2D3137 2px;
+    border-radius: 15px;
+    word-wrap: break-word;
+    padding: 1.5rem;
+}
+
+.newsbox5 {
+    grid-column: span 2;
+    background-color: #16161A;
+    border-radius: 5px;
+    height: 335px;
+    border: solid #2D3137 2px;
+    border-radius: 15px;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    width: 96%;
+    justify-content: center;
+    height: 180px;
+    margin-bottom: -2rem;
+    margin-top: .6rem;
+}
+
+.paraContent {
+    margin-top: -1rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 150px;
+    margin-bottom: -1rem;
+    word-spacing: 4px;
+    margin-left: .45rem;
+}
+
+@media (max-width: 1185px) {
+    .about {
+        margin-bottom: 3rem;
+    }
+}
+
+
+@media (max-width: 1100px) {
+    .nav {
+        width: 200px;
+    }
+
+    .dock {
+        margin-top: 3.2rem;
+    }
+
+    .about {
+        margin-bottom: 3rem;
+    }
+
+    .tickerTape {
+        height: 33px;
+        margin-left: -.3rem;
+    }
+
+    .scoreCardTitle,
+    .keyMetricsTitle,
+    .forecastsTitle {
+        margin-top: 1.5rem;
+    }
+
+    .keyMetricsTitle {
+        margin-top: -.5rem;
+    }
+
+    .forecastsTitle {
+        margin-top: 4.5rem;
+    }
+
+    .scoreCard {
+        height: 110px;
+    }
+
+    .keyMetrics {
+        margin-top: 1.2rem;
+    }
+}
+
+
+
+
+@media (max-width: 975px) {
+    .keyMetrics {
+        margin-bottom: 2.5rem;
+    }
+}

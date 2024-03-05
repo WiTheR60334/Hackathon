@@ -1,0 +1,6 @@
+flask
+tensorflow
+Pillow
+flask_cors
+yfinance
+matplotlib
