@@ -51,7 +51,7 @@ def forecast(ticker: str):
         x_train, y_train = np.array(x_train), np.array(y_train)
         x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-        model1 = load_model("C://Users//Romir//Desktop//Projects//safer-one//Hackathon//backend//Accurate.h5")
+        model1 = load_model("Accurate.h5")
         test_data = data_training_array[data_training_len-60:, :]
         x_test = []
 
@@ -72,7 +72,7 @@ def forecast(ticker: str):
         pred_price = model1.predict(X_test1)
         pred_price = scaler.inverse_transform(pred_price)
 
-        model2 = load_model("C://Users//Romir//Desktop//Projects//safer-one//Hackathon//backend//exp4.h5")
+        model2 = load_model("exp4.h5")
         def tomorrows_price(data, scaler, model1):
             last_60_days = data[-60:].values
             last_60_days_scaled = scaler.transform(last_60_days)

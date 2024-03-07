@@ -4,7 +4,6 @@ import styles from "./Chart.module.css";
 import axios from "axios";
 import { Stat, StatArrow } from "@chakra-ui/react";
 import { CircularProgress, CircularProgressLabel } from "@chakra-ui/react";
-import { SymbolOverview } from "react-ts-tradingview-widgets";
 import ChartX from "@/components/ChartX/ChartX";
 
 function fetchAPI(selectedTicker, setMessage, setFirstValue) {
@@ -123,15 +122,6 @@ function Chart({ selectedTicker }) {
       </div>
       <div className={styles.chartt}>
         <ChartX selectedTicker={selectedTicker} />
-        {/* <SymbolOverview
-          colorTheme="dark"
-          autosize
-          chartType="area"
-          downColor="#800080"
-          borderDownColor="#800080"
-          wickDownColor="#800080"
-          backGroundColor="white"
-        /> */}
       </div>
     </div>
   );
