@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
-
 import { createChart, ColorType } from "lightweight-charts";
 
 function fetchAPI(selectedTicker, setMessage, setFirstValue) {

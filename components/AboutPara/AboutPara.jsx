@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./AboutPara.module.css";
-import classnames from "classnames";
 import axios from "axios";
 
 function AboutPara({ selectedTicker }) {
