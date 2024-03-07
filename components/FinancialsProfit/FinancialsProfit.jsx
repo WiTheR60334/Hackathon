@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ReactApexChart from "react-apexcharts";
 
 function fetchAPI(selectedTicker, setMessage, setFirstValue) {
   const ticker =
@@ -31,34 +30,10 @@ function FinancialsProfit({ selectedTicker }) {
   }, [selectedTicker, previousTicker]);
 
   
-    const chartData ={
-      options: {
-        chart: {
-          type: "line",
-        },
-        xaxis: {
-          categories: firstValue,
-        },
-      },
-      series: [
-        {
-          name: "Profit",
-          data: message,
-        },
-      ],
-      tooltip: {
-        theme: "dark",
-        style: {
-          backgroundColor: "#111",
-          color: "#fff",
-        },
-        },
-    };
 
   return (
     <div>
       <div id="chart">
-        <ReactApexChart options={chartData.options} series={chartData.series} type="line" height={350} />
       </div>
     </div>
   );
