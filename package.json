@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
-    "@coreui/coreui": "^4.3.2",
-    "@coreui/react": "^4.11.1",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@syncfusion/ej2-react-charts": "^24.2.5",
