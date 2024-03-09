@@ -14,7 +14,7 @@ function KeyMetrics({ selectedTicker }) {
         : selectedTicker.ticker;
 
     axios
-      .get(`http://localhost:7000/stock_data?ticker=${ticker}`)
+      .get(`https://key-metrics.vercel.app/api/keymetrics?ticker=${ticker}`)
       .then((response) => {
         setStockData(response.data);
       })
