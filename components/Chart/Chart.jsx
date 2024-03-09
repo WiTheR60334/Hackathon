@@ -11,7 +11,7 @@ function fetchAPI(selectedTicker, setMessage, setFirstValue) {
     typeof selectedTicker === "string" ? selectedTicker : selectedTicker.ticker;
 
   axios
-    .get(`http://backend-quotes.vercel.app/api/quote?ticker=${ticker}`)
+    .get(`https://backend-quotes.vercel.app/api/quote?ticker=${ticker}`)
     .then((response) => {
       setMessage(response.data.currentPrice);
       setFirstValue(response.data.previousPrice);
