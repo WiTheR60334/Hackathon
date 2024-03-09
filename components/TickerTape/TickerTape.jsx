@@ -5,7 +5,7 @@ import styles from "./TickerTape.module.css";
 import { Tooltip } from "react-tooltip";
 
 async function getStockData(item) {
-  const response = await axios.get("https://backend-ticker-tape.vercel.app", {
+  const response = await axios.get("https://ticker-tape.vercel.app", {
     params: { ticker: item },
   });
   return response.data;
