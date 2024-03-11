@@ -5,9 +5,12 @@ import styles from "./TickerTape.module.css";
 import { Tooltip } from "react-tooltip";
 
 async function getStockData(item) {
-  const response = await axios.get("https://ticker-tape.vercel.app/api/tickertape", {
-    params: { ticker: item },
-  });
+  const response = await axios.get(
+    "https://ticker-tape.vercel.app/api/tickertape",
+    {
+      params: { ticker: item },
+    }
+  );
   return response.data;
 }
 const TickerTape = ({ items }) => {
@@ -87,15 +90,18 @@ const TickerTape = ({ items }) => {
           items.map((item, index) => {
             const currentValue = stockData[item]?.currentValue;
             const firstValue = stockData[item]?.firstValue;
-            
+
             let priceChange = 0;
             if (currentValue !== undefined && firstValue !== undefined) {
-              priceChange = (parseFloat(currentValue) - parseFloat(firstValue)).toFixed(2);
+              priceChange = (
+                parseFloat(currentValue) - parseFloat(firstValue)
+              ).toFixed(2);
             }
 
             const percentageChange = Math.abs(
-              ((currentValue !== undefined && firstValue !== undefined) ? 
-                ((currentValue - firstValue) / firstValue) * 100 : 0)
+              currentValue !== undefined && firstValue !== undefined
+                ? ((currentValue - firstValue) / firstValue) * 100
+                : 0
             );
 
             return (
@@ -117,14 +123,16 @@ const TickerTape = ({ items }) => {
                   }`}
                   style={{ paddingLeft: "4px" }}
                 >
-                  {(currentValue !== undefined || currentValue !== "" ? currentValue.toFixed(2) : firstValue)}
+                  {currentValue !== undefined || currentValue !== null
+                    ? currentValue.toFixed(2)
+                    : firstValue}
                 </span>
                 <div
                   className={`${styles.stockPriceChange} ${
                     priceChange >= 0 ? styles.positive : styles.negative
                   }`}
                 >
-                  ({(priceChange >= 0 ? "+" : "-")}
+                  ({priceChange >= 0 ? "+" : "-"}
                   {percentageChange.toFixed(2)}%)
                 </div>
               </div>
