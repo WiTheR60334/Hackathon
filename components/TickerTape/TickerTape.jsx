@@ -117,7 +117,7 @@ const TickerTape = ({ items }) => {
                   }`}
                   style={{ paddingLeft: "4px" }}
                 >
-                  {(currentValue)}
+                  {(currentValue !== undefined ? currentValue.toFixed(2) : "")}
                 </span>
                 <div
                   className={`${styles.stockPriceChange} ${
