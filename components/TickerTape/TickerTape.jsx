@@ -4,7 +4,7 @@ import axios from "axios";
 import styles from "./TickerTape.module.css";
 
 async function getStockData(item) {
-  const response = await axios.get("http://localhost:5000/chart", {
+  const response = await axios.get("https://ticker-tape.vercel.app/api/tickertape", {
     params: { ticker: item },
   });
   return response.data;
