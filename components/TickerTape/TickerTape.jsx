@@ -38,7 +38,7 @@ const TickerTape = ({ items }) => {
 
     fetchData();
 
-    const intervalId = setInterval(fetchData, 2000);
+    const intervalId = setInterval(fetchData, 4000);
     return () => clearInterval(intervalId);
   }, [items]);
 
@@ -54,7 +54,7 @@ const TickerTape = ({ items }) => {
         }
       }
       setStockData(updatedData);
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [items, stockData]);
