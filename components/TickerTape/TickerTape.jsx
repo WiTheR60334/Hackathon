@@ -11,7 +11,7 @@ async function getStockData(item) {
 }
 
 const TickerTape = ({ items }) => {
-  const [stockData, setStockData] = useState({});
+  const [stockData, setStockData] = useState(null); // Initialize with null
   const [valueChanged, setValueChanged] = useState(false);
   const [dataFetched, setDataFetched] = useState(false);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
@@ -48,7 +48,7 @@ const TickerTape = ({ items }) => {
         for (const item of items) {
           const response = await getStockData(item);
           updatedData[item] = response.currentValue;
-          if (stockData[item]?.currentValue !== response.currentValue) {
+          if (stockData && stockData[item]?.currentValue !== response.currentValue) {
             setValueChanged(true);
             setTimeout(() => setValueChanged(false), 500);
           }
@@ -87,14 +87,11 @@ const TickerTape = ({ items }) => {
       >
         {dataFetched ? (
           items.map((item, index) => {
-            const currentValue = stockData[item] ? stockData[item].currentValue : previousData[item]?.currentValue;
-            const firstValue = stockData[item] ? stockData[item].firstValue : previousData[item]?.firstValue;
-            const priceChange = firstValue
-              ? (parseFloat(currentValue) - parseFloat(firstValue)).toFixed(2)
-              : 0;
-            const percentageChange = Math.abs(
-              ((currentValue - firstValue) / firstValue) * 100
-            );
+            const currentValue = stockData ? (stockData[item] ? stockData[item].currentValue : previousData[item]?.currentValue) : null;
+            const firstValue = stockData ? (stockData[item] ? stockData[item].firstValue : previousData[item]?.firstValue) : null;
+            if (currentValue === null || firstValue === null) return null;
+            const priceChange = (parseFloat(currentValue) - parseFloat(firstValue)).toFixed(2);
+            const percentageChange = Math.abs(((currentValue - firstValue) / firstValue) * 100);
 
             return (
               <div
@@ -110,7 +107,7 @@ const TickerTape = ({ items }) => {
                   }`}
                   style={{ paddingLeft: "4px" }}
                 >
-                  {currentValue !== undefined ? currentValue.toFixed(2) : ""}
+                  {currentValue.toFixed(2)}
                 </span>
                 <div
                   className={`${styles.stockPriceChange} ${
