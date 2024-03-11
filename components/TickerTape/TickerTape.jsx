@@ -5,9 +5,12 @@ import styles from "./TickerTape.module.css";
 import { Tooltip } from "react-tooltip";
 
 async function getStockData(item) {
-  const response = await axios.get("https://ticker-tape.vercel.app/api/tickertape", {
-    params: { ticker: item },
-  });
+  const response = await axios.get(
+    "https://ticker-tape.vercel.app/api/tickertape",
+    {
+      params: { ticker: item },
+    }
+  );
   return response.data;
 }
 const TickerTape = ({ items }) => {
@@ -28,9 +31,11 @@ const TickerTape = ({ items }) => {
         for (let i = 0; i < allData.length; i++) {
           stockData[items[i]] = allData[i];
         }
-        setStockData(stockData);
-        setDataFetched(true);
-        setShowWelcomeMessage(false);
+        setTimeout(() => {
+          setStockData(stockData);
+          setDataFetched(true);
+          setShowWelcomeMessage(false);
+        }, 2000);
       } catch (error) {
         console.error("Error fetching stock data:", error);
       }
@@ -38,7 +43,7 @@ const TickerTape = ({ items }) => {
 
     fetchData();
 
-    const intervalId = setInterval(fetchData, 4000);
+    const intervalId = setInterval(fetchData, 2000);
     return () => clearInterval(intervalId);
   }, [items]);
 
@@ -54,7 +59,7 @@ const TickerTape = ({ items }) => {
         }
       }
       setStockData(updatedData);
-    }, 4000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [items, stockData]);
@@ -84,58 +89,58 @@ const TickerTape = ({ items }) => {
         }}
       >
         {dataFetched ? (
-  items.map((item, index) => {
-    const currentValue = stockData[item]?.currentValue;
-    const firstValue = stockData[item]?.firstValue;
-    
-    // Calculate priceChange
-    let priceChange = 0;
-    if (currentValue !== undefined && firstValue !== undefined) {
-      priceChange = (parseFloat(currentValue) - parseFloat(firstValue)).toFixed(2);
-    }
+          items.map((item, index) => {
+            const currentValue = stockData[item]?.currentValue;
+            const firstValue = stockData[item]?.firstValue;
 
-    // Calculate percentageChange
-    const percentageChange = Math.abs(
-      ((currentValue !== undefined && firstValue !== undefined) ? 
-        ((currentValue - firstValue) / firstValue) * 100 : 0)
-    );
+            let priceChange = 0;
+            if (currentValue !== undefined && firstValue !== undefined) {
+              priceChange = (
+                parseFloat(currentValue) - parseFloat(firstValue)
+              ).toFixed(2);
+            }
 
-    return (
-      <div
-        key={index}
-        className={styles.elements}
-        // data-tooltip-id="my-tooltipp"
-      >
-        {/* <Tooltip
-          id="my-tooltipp"
-          className={styles.tooltip}
-          content={tooltipContentPEee}
-          style={{ backgroundColor: "#000", borderRadius: "8px" }}
-        /> */}
-        {item} :
-        <span
-          className={`${styles.stockItem} ${
-            valueChanged ? styles.valueChanged : ""
-          }`}
-          style={{ paddingLeft: "4px" }}
-        >
-          {(currentValue !== undefined ? currentValue.toFixed(2) : "")}
-        </span>
-        <div
-          className={`${styles.stockPriceChange} ${
-            priceChange >= 0 ? styles.positive : styles.negative
-          }`}
-        >
-          ({(priceChange >= 0 ? "+" : "-")}
-          {percentageChange.toFixed(2)}%)
-        </div>
-      </div>
-    );
-  })
-) : (
-  <div className={styles.greeting}>Welcome :)</div>
-)}
+            const percentageChange = Math.abs(
+              currentValue !== undefined && firstValue !== undefined
+                ? ((currentValue - firstValue) / firstValue) * 100
+                : 0
+            );
 
+            return (
+              <div
+                key={index}
+                className={styles.elements}
+                // data-tooltip-id="my-tooltipp"
+              >
+                {/* <Tooltip
+                  id="my-tooltipp"
+                  className={styles.tooltip}
+                  content={tooltipContentPEee}
+                  style={{ backgroundColor: "#000", borderRadius: "8px" }}
+                /> */}
+                {item} :
+                <span
+                  className={`${styles.stockItem} ${
+                    valueChanged ? styles.valueChanged : ""
+                  }`}
+                  style={{ paddingLeft: "4px" }}
+                >
+                  {currentValue !== undefined ? currentValue.toFixed(2) : ""}
+                </span>
+                <div
+                  className={`${styles.stockPriceChange} ${
+                    priceChange >= 0 ? styles.positive : styles.negative
+                  }`}
+                >
+                  ({priceChange >= 0 ? "+" : "-"}
+                  {percentageChange.toFixed(2)}%)
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div className={styles.greeting}>Welcome :)</div>
+        )}
       </ul>
     </div>
   );
