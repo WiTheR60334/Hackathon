@@ -90,7 +90,10 @@ const TickerTape = ({ items }) => {
             const currentValue = stockData ? (stockData[item] ? stockData[item].currentValue : previousData[item]?.currentValue) : null;
             const firstValue = stockData ? (stockData[item] ? stockData[item].firstValue : previousData[item]?.firstValue) : null;
             if (currentValue === null || firstValue === null) return null;
-            const priceChange = (parseFloat(currentValue) - parseFloat(firstValue)).toFixed(2);
+            const priceChange = currentValue && firstValue
+              ? (parseFloat(currentValue) - parseFloat(firstValue)).toFixed(2)
+              : 0;
+
             const percentageChange = Math.abs(((currentValue - firstValue) / firstValue) * 100);
 
             return (
