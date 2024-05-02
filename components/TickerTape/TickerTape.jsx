@@ -5,10 +5,16 @@ import styles from "./TickerTape.module.css";
 import { Tooltip } from "react-tooltip";
 
 async function getStockData(item) {
-  const response = await axios.get("https://ticker-tape.vercel.app/api/tickertape", {
-    params: { ticker: item },
-  });
-  return response.data;
+  try {
+    const response = await axios.get("https://ticker-tape.vercel.app/api/tickertape", {
+    // const response = await axios.get("http://localhost:5000/chart", {
+      params: { ticker: item },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching stock data:", error);
+    return { currentValue: 0, firstValue: 0 }; // Return default values in case of error
+  }
 }
 const TickerTape = ({ items }) => {
   const [stockData, setStockData] = useState({});
@@ -54,7 +60,7 @@ const TickerTape = ({ items }) => {
         }
       }
       setStockData(updatedData);
-    }, 2000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [items, stockData]);
