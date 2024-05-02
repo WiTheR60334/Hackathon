@@ -13,7 +13,7 @@ async function getStockData(item) {
     return response.data;
   } catch (error) {
     console.error("Error fetching stock data:", error);
-    return { currentValue: 0, firstValue: 0 }; // Return default values in case of error
+    return { currentValue: 0, firstValue: 0 }; 
   }
 }
 const TickerTape = ({ items }) => {
