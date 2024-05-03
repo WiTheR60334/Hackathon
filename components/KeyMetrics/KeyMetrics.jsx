@@ -130,7 +130,7 @@ function KeyMetrics({ selectedTicker }) {
           {stockData ? (
             <div className={styles.value}>
               {stockData && stockData.trailing_pe_ratio !== null
-                ? stockData.trailing_pe_ratio
+                ? stockData.trailing_pe_ratio.toFixed(2)
                 : "N/A"}
             </div>
           ) : (
@@ -168,7 +168,7 @@ function KeyMetrics({ selectedTicker }) {
           {stockData ? (
             <div className={styles.value}>
               {stockData && stockData.pb_ratio !== null
-                ? stockData.pb_ratio
+                ? stockData.pb_ratio.toFixed(2)
                 : "N/A"}
             </div>
           ) : (
@@ -207,7 +207,7 @@ function KeyMetrics({ selectedTicker }) {
           {stockData ? (
             <div className={styles.value}>
               {stockData && stockData.dividend_yield !== null
-                ? stockData.dividend_yield + "%"
+                ? stockData.dividend_yield.toFixed(2) + "%"
                 : "N/A"}
             </div>
           ) : (
@@ -248,7 +248,7 @@ function KeyMetrics({ selectedTicker }) {
             <div className={styles.value}>
               {stockData && stockData.market_cap !== null ? (
                 <>
-                  {`${stockData.market_cap}T`}{" "}
+                  {`${stockData.market_cap.toFixed(2)}T`}{" "}
                   {stockData.currency && (
                     <span className={styles.smallCase}>
                       {stockData.currency}
