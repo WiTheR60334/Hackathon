@@ -93,14 +93,17 @@ function AboutMetrics({ selectedTicker }) {
                     rel="noopener noreferrer"
                     style={{ display: "inline-block" }}
                   >
-                    {new URL(stockData.website).hostname.replace("www.", "")}
-                    <TbExternalLink
+                  {stockData.website.includes("www.") ? 
+                    new URL(stockData.website).hostname.replace("www.", "") :
+                    stockData.website
+                  }                    
+                  {/* <TbExternalLink
                       style={{
                         display: "inline-block",
                         marginLeft: "7px",
                         marginBottom: "3px",
                       }}
-                    />
+                    /> */}
                   </a>
                 </>
               ) : (

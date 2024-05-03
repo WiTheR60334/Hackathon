@@ -52,15 +52,12 @@ function AboutPara({ selectedTicker }) {
   };
 
   return (
-    <div className={styles.content} style={{ height: containerHeight }}>
+    <div className={styles.content} style={{ height: 'auto' }}>
       {stockData ? (
         <div>
-          <div
-            // className={classnames(styles.para, clamped && styles.clamp)}
-            // ref={paraRef}
-          >
+          <div>
+            <div className={styles.clamp}>
             {stockData.about !== null ? 
-              // Displaying up to 6 lines including the last full stop
               stockData.about
                 .split(".")
                 .slice(0, 5)
@@ -68,12 +65,8 @@ function AboutPara({ selectedTicker }) {
               : 
               "N/A"
             }
+            </div>
           </div>
-          {/* {stockData.about && stockData.about.split(".").length > 6 && (
-            <button className={styles.btn} onClick={handleClick}>
-              {clamped ? "Read more" : "Read less"}
-            </button>
-          )} */}
         </div>
       ) : (
         <span className={styles.loading}>Loading...</span>
