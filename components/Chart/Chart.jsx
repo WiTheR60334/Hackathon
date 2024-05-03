@@ -57,7 +57,7 @@ function Chart({ selectedTicker }) {
   const colors = priceChange >= 0 ? {
     backgroundColor: "transparent",
     textColor: "white",
-    areaTopColor: "rgba(3, 123, 102, .35)",
+    areaTopColor: "rgba(3, 123, 102, .4)",
     areaBottomColor: 'rgba(38, 166, 154, 0)',
     lineColor: 'rgba(38, 166, 154, 1)',
   } : {

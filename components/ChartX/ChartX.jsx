@@ -88,13 +88,21 @@ function ChartX({ selectedTicker, colors }) {
         lineWidth: 2,
       });
 
+      let labels = [];
+      for (let i = 0; i < 24*60; i += 30) {
+          let hour = Math.floor(i / 60);
+          let minute = i % 60;
+          labels.push(hour + ":" + minute);
+      }
+
       chartInstanceRef.current.timeScale().applyOptions({
         timeVisible: true,
         rightOffSet: 20,
-        barSpacing: 15,
-        minBarSpacing: 5,
-        fixLeftEdge: true,
+        barSpacing: 1,
+        minBarSpacing: 1,
+        fixLeftEdge: true,  
         timeFormat: "%H:%m",
+        customLabels: labels
       });
 
       const newSeries = chartInstanceRef.current.addAreaSeries({
@@ -107,17 +115,6 @@ function ChartX({ selectedTicker, colors }) {
       chartInstanceRef.current.timeScale().fitContent();
     } else {
         series.setData(data);
-        // chartInstanceRef.current.applyOptions({
-        //   layout: {
-        //     background: { type: ColorType.Solid, color: colors.backgroundColor },
-        //     textColor: colors.textColor,
-        //   },
-        //   series: {
-        //     lineColor: colors.lineColor,
-        //     topColor: colors.areaTopColor,
-        //     bottomColor: colors.areaBottomColor
-        //   }
-        // });
     }
 
     chartInstanceRef.current.applyOptions({
