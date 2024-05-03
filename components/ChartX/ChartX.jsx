@@ -127,12 +127,13 @@ function ChartX({ selectedTicker, colors }) {
       },
     });
 
-    // Update series colors
+    if (series) {
     series.applyOptions({
       lineColor: colors.lineColor,
       topColor: colors.areaTopColor,
       bottomColor: colors.areaBottomColor,
     }); 
+  }
 
     const handleResize = () => {
       if (chartInstanceRef.current) {
