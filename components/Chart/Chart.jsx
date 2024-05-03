@@ -54,6 +54,20 @@ function Chart({ selectedTicker }) {
     ? (parseFloat(message) - parseFloat(firstValue)).toFixed(2)
     : 0;
 
+  const colors = priceChange >= 0 ? {
+    backgroundColor: "transparent",
+    textColor: "white",
+    areaTopColor: "rgba(3, 123, 102, .35)",
+    areaBottomColor: 'rgba(38, 166, 154, 0)',
+    lineColor: 'rgba(38, 166, 154, 1)',
+  } : {
+    backgroundColor: "transparent",
+    textColor: "white",
+    areaTopColor: "rgba(239, 83, 80, 0.35)",
+    areaBottomColor: 'rgba(239, 83, 80, 0)',
+    lineColor: 'rgba(239, 83, 80, 1)',
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.stockTitle}>
@@ -119,9 +133,9 @@ function Chart({ selectedTicker }) {
             </div>
           </>
         )}
-      </div>
-      <div className={styles.chartt}>
-        <ChartX selectedTicker={selectedTicker} />
+      </div> 
+      <div>
+        <ChartX selectedTicker={selectedTicker} colors={colors} />
       </div>
     </div>
   );

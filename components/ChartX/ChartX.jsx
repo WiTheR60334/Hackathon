@@ -37,11 +37,13 @@ function fetchAPI(selectedTicker, setMessage, setFirstValue) {
     });
 }
 
-function ChartX({ selectedTicker }) {
+function ChartX({ selectedTicker, colors }) {
   const [message, setMessage] = useState([]);
   const [firstValue, setFirstValue] = useState([]);
   const [loading, setLoading] = useState(true);
   const [series, setSeries] = useState(null);
+
+  // console.log("colors", colors);
 
   useEffect(() => {
     setLoading(true);
@@ -53,17 +55,7 @@ function ChartX({ selectedTicker }) {
     }, 3500);
 
     return () => clearInterval(intervalId);
-  }, [selectedTicker]);
-
-  const {
-    colors: {
-      backgroundColor = "transparent",
-      lineColor = "#3A6FF8",
-      textColor = "white",
-      areaTopColor = "#3A6FF8",
-      areaBottomColor = "rgba(58, 111, 248, 0.01)",
-    } = {},
-  } = {};
+  }, [selectedTicker, colors]);
 
   const chartContainerRef = useRef();
   const chartInstanceRef = useRef(null);
@@ -80,8 +72,8 @@ function ChartX({ selectedTicker }) {
     if (!chartInstanceRef.current) {
       chartInstanceRef.current = createChart(chartContainerRef.current, {
         layout: {
-          background: { type: ColorType.Solid, color: backgroundColor },
-          textColor,
+          background: { type: ColorType.Solid, color: colors.backgroundColor },
+          textColor: colors.textColor,
         },
         grid: {
           vertLines: {
@@ -93,6 +85,7 @@ function ChartX({ selectedTicker }) {
         },
         width: chartContainerRef.current.clientWidth,
         height: 350,
+        lineWidth: 2,
       });
 
       chartInstanceRef.current.timeScale().applyOptions({
@@ -105,16 +98,41 @@ function ChartX({ selectedTicker }) {
       });
 
       const newSeries = chartInstanceRef.current.addAreaSeries({
-        lineColor,
-        topColor: areaTopColor,
-        bottomColor: areaBottomColor,
+        lineColor: colors.lineColor,
+        topColor: colors.areaTopColor,
+        bottomColor: colors.areaBottomColor
       });
       newSeries.setData(data);
       setSeries(newSeries);
       chartInstanceRef.current.timeScale().fitContent();
     } else {
-      series.setData(data);
+        series.setData(data);
+        // chartInstanceRef.current.applyOptions({
+        //   layout: {
+        //     background: { type: ColorType.Solid, color: colors.backgroundColor },
+        //     textColor: colors.textColor,
+        //   },
+        //   series: {
+        //     lineColor: colors.lineColor,
+        //     topColor: colors.areaTopColor,
+        //     bottomColor: colors.areaBottomColor
+        //   }
+        // });
     }
+
+    chartInstanceRef.current.applyOptions({
+      layout: {
+        background: { type: ColorType.Solid, color: colors.backgroundColor },
+        textColor: colors.textColor,
+      },
+    });
+
+    // Update series colors
+    series.applyOptions({
+      lineColor: colors.lineColor,
+      topColor: colors.areaTopColor,
+      bottomColor: colors.areaBottomColor,
+    }); 
 
     const handleResize = () => {
       if (chartInstanceRef.current) {
@@ -130,11 +148,11 @@ function ChartX({ selectedTicker }) {
       window.removeEventListener("resize", handleResize);
     };
   }, [
-    backgroundColor,
-    lineColor,
-    textColor,
-    areaTopColor,
-    areaBottomColor,
+    colors.backgroundColor,
+    colors.textColor,
+    colors.areaTopColor,
+    colors.areaBottomColor,
+    colors.lineColor,
     message,
     firstValue,
     series,
